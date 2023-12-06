@@ -1,11 +1,8 @@
 # 시그모이드 함수의 그래프
 
+from Functions.sigmoid import sigmoid
 import numpy as np
 import matplotlib.pylab as plt
-
-# 시그모이드 함수
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
 
 x = np.arange(-5.0, 5.0, 0.1)
 y = sigmoid(x)
