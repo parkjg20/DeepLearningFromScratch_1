@@ -29,10 +29,11 @@ print(net.W)
 x = np.array([0.6, 0.9])
 p = net.predict(x)
 print(p)
+print("최대값 idx =", np.argmax(p))
 
-np.argmax(p)
 t = np.array([0, 0, 1])
-net.loss(x, t)
+loss = net.loss(x, t)
+print("손실함수 출력 =", loss)
 
 def f(W):
     return net.loss(x, t)
