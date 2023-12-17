@@ -27,7 +27,7 @@ class TwoLayeredNeuralNetwork:
         z2 = sigmoid(a2)
 
         # 소프트맥스 생략
-        # z3 = sigmoid(z2)
+        # z3 = softmax(z2)
         y = z2
 
         return y
@@ -39,10 +39,10 @@ class TwoLayeredNeuralNetwork:
 
     def accuracy(self, x, t):
         y = self.predict(x)
-        x = np.argmax(x, axis = 1)
         y = np.argmax(y, axis = 1)
+        t = np.argmax(t, axis = 1)
 
-        return np.sum(x == t) / float(x.shape[0])
+        return np.sum(y == t) / float(x.shape[0])
 
     def numerical_gradient(self, x, t):
         loss_W = lambda W: self.loss(x, t)
@@ -56,13 +56,11 @@ class TwoLayeredNeuralNetwork:
         return grads
 
 net = TwoLayeredNeuralNetwork(input_size=784, hidden_size=100, output_size=10)
-print(net.params['W1'].shape)
-print(net.params['b1'].shape)
-print(net.params['W2'].shape)
-print(net.params['b2'].shape)
+# print(net.params['W1'].shape)
+# print(net.params['b1'].shape)
+# print(net.params['W2'].shape)
+# print(net.params['b2'].shape)
 
 
 x = np.random.rand(100, 784)
 y = net.predict(x)
-
-print(y)
